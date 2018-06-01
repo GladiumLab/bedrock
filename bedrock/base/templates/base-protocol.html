@@ -1,7 +1,7 @@
 {% extends 'base-pebbles.html' %}
 
 {% block site_css %}
-  {% stylesheet 'protocol-core' %}
+  {{ css_bundle('protocol-core') }}
 {% endblock %}
 
 {% block tabzilla_tab %}{% endblock %}
@@ -13,6 +13,16 @@
     {% set logo_src = static('img/pebbles/moz-wordmark-dark-reverse.svg') %}
     {% include 'mozorg/home/includes/nav.html' %}
   {% endif %}
+{% endblock %}
+
+{% block site_js %}
+<!--[if !lte IE 8]><!-->
+  {{ js_bundle('common-protocol') }}
+<!--<![endif]-->
+
+<!--[if lte IE 8]>
+  {{ js_bundle('common-ie8') }}
+<![endif]-->
 {% endblock %}
 
 {% block update_notification %}{% endblock %}
